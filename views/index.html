@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add your own icon here--> 
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css" type="text/css" >
+    <title>Learn Automation</title>
+    <script defer src="/static/js/index.js"></script>
+</head>
+<body>
+    <div id="err-message"></div>
+    <div class="row">
+    <div class="col-md-6 mx-auto p-0">
+        <div class="card">
+            <div class="login-box">
+                <div class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" id="tab-2" class="tab">Sign Up</label>
+                    <div class="login-space">
+                        <form action="/route/login" method="POST">
+                            <div class="login">
+                                <div class="group"> 
+                                    <label for="user" class="label">Username</label> 
+                                    <input name="username" id="user" type="text" class="input" placeholder="Enter your username" required> 
+                                </div>
+                                <div class="group">
+                                    <label for="pass" class="label">Password</label> 
+                                    <input name="password" id="pass" type="password" class="input" data-type="password" placeholder="Enter your password" required> 
+                                </div>
+                                <div class="group"> 
+                                    <input id="check" type="checkbox" class="check" checked> 
+                                    <label for="check"><span class="icon"></span> Keep me Signed in</label> 
+                                </div>
+                                <div class="group"> 
+                                    <input id="submit" type="submit" class="button" value="Log In"> 
+                                </div>
+                                <div class="hr"></div>
+                                <div class="foot"> <a id="forgotPass" href="#">Forgot Password?</a> </div>
+                            </div>
+                        </form>
+                        <!-- <form action="/route/signup" method="POST"> -->
+                            <div class="sign-up-form" >
+                                <div class="group"> 
+                                    <label for="user2" class="label">Username</label> 
+                                    <input name="usernameReg" id="user2" type="text" class="input" placeholder="Create your Username"> 
+                                </div>
+                                <div class="group"> 
+                                    <label for="pass2" type="password" class="label">Password</label> 
+                                    <input name="passwordReg" id="pass2" type="password" class="input" data-type="password" placeholder="Create your password"> 
+                                </div>
+                                <div class="group"> 
+                                    <label for="repeatPass" type="password" class="label">Repeat Password</label> 
+                                    <input name="repeastPass" id="repeatPass" type="password" class="input" data-type="password" placeholder="Repeat your password"> 
+                                </div>
+                                <div class="group"> 
+                                    <label for="email" type="email" class="label">Email Address</label> 
+                                    <input name="email" id="email" type="email" class="input" placeholder="Enter your email address"> 
+                                </div>
+                                <div class="group"> 
+                                    <input id="submitReg" type="submit" class="button" value="Sign Up"> 
+                                </div>
+                                <div class="hr"></div>
+                                <div class="foot"> <label class="already-member" for="tab-1">Already Member?</label> </div>
+                            </div>
+                        <!-- </form> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    const user = document.getElementById("user");
+    const pass = document.getElementById("pass");
+    const submitForm = document.getElementById("submit");
+    const signup = document.getElementById("tab-2");
+    const err = document.getElementById("err-message");
+
+    // Error message element
+    const msg = document.createElement("h4");
+    msg.classList.add("alert");
+    msg.classList.add("alert-danger");
+    msg.classList.add("text-center");
+
+    submitForm.addEventListener("click", () => {
+
+        const username = user.value;
+        const password = pass.value;
+        if (username.value === "" && password.value === "") {
+            msg.innerHTML = "Please enter username and password";
+            msg.style.display = "block";
+            err.appendChild(msg);
+        }
+        else if(username != "Admin" && password != "admin123") {
+            msg.innerHTML = "Please enter valid login credentials";
+            msg.style.display = "block";
+            err.appendChild(msg);
+            user.value = pass.value = "";
+        }
+    });
+
+    signup.addEventListener("click", () => {
+        msg.style.display = "none";
+    })
+</script>
+</body>
+</html>
