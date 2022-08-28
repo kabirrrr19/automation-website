@@ -7,12 +7,13 @@ import router from './router.js';
 import morgan from 'morgan';
 import fs from 'fs';
 
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
 // Morgan setup
 // const __dirname = path.resolve();
+
 const __dirname = path.resolve(path.dirname(""));
 
 // Creating a morgan token
@@ -44,18 +45,19 @@ app.use(
     resave: false,
     saveUninitialized: true,
   })
-  );
+);
   
   
-  app.use('/route', router);
-  
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './views/index.html'));
-  });
+app.use('/route', router);
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './views/index.html'));
+});
   
 function assignId(req, res, next) {
   req.id = uuidv4();
   next();
 };
-    
-    app.listen(PORT, () => console.log(`Server started at https://localhost:${PORT}`));
+
+
+app.listen(PORT, () => console.log(`Server started at https://localhost:${PORT}`));
