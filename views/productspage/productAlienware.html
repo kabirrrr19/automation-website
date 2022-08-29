@@ -125,13 +125,13 @@
 <script>
 $(document).ready(function(){
     document.getElementById('rzp-button1').onclick =  async function(e){
-        const data = await fetch('http://localhost:3000/route/razorpay', { method: 'POST' }).then((t) => t.json()); 
+        // const data = await fetch('http://localhost:3000/route/razorpay', { method: 'POST' }).then((t) => t.json()); 
         // console.log("function me data hai ye");
         // console.log(data);  
         var options = {
             "key": "rzp_test_vUKeh9GnlhSIOV", // Enter the Key ID generated from the Dashboard
-            "amount": data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-            "currency": data.currency,
+            "amount": "4868000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
             "name": "Automate Your Way",
             "description": "Dell Alienware",
             "image": "/assets/img/products/laptop-dell.webp",
