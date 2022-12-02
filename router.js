@@ -62,7 +62,8 @@ router.post('/login', (req, res) => {
 
 
 // router.post("/pay", (req, res) => {
-//   console.log("create orderId request : ", req.body);
+//   console.log("create orderId request :
+// ", req.body);
 //   var options = {
 //     amount: 100, // amount in the smallest currency unit
 //     currency: "INR",
